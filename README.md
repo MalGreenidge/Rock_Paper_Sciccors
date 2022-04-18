@@ -1,4 +1,4 @@
-# Rock Paper Sciccors - App
+# Rock Paper Scissors - App
 
 ## Table of contents
 * [Introduction](#introduction)
@@ -8,7 +8,7 @@
 
 ## Introduction
 
-The simple implementation of an elementary school classic; Rock, Paper, Scissors.
+The simple implementation of a childhood classic; Rock, Paper, Scissors.
 
 ## Technologies
 
