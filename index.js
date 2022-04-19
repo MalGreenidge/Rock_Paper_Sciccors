@@ -23,6 +23,9 @@ function computerPlay() {
 the winner of the winner of the round like so: "You lose! Paper beats Rock" */  
 
 const playRound = (playerSelection, computerSelection) => {
+    // transforms all player input strings to lower case
+    playerSelection = playerSelection.toLowerCase();
+
     if (playerSelection === computerSelection) {
         return 'It\'s a tie!';
     }
