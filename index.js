@@ -1,57 +1,49 @@
-console.log("Welcome");
+let choices = ['rock', 'paper', 'scissors']; //Array of choices rock, paper, or scissors
+let randomChoice = choices[Math.floor(Math.random() * choices.length)]; // Random number generator that selects random element from choices array
 
-// Returns random selection rock, paper, or scissors
-function computerPlay() {
-    const randomNumber = Math.floor(Math.random() * 3);
-
-    switch(randomNumber) {
-        case 0:
-            return 'rock';
-            break;
-        case 1:
-            return 'paper';
-            break;
-        case 2:
-            return 'scissors';
-    }
-
+// Arrow function that returns the computers selection. It's always random
+let computerPlay = () => {
+    // let randomNum = Math.floor(Math.random() * 3);
+    let cpuChoice = randomChoice;
+    return cpuChoice;
 }
 
-// console.log(computerPlay());
+// Arrow function that returns the User selection and converts any string entered to lower case
+let userPlay = () => {
+    let userChoice = prompt('Rock, Paper, OR Scissors? ');
+    return userChoice.toLowerCase();
+}
 
-/* Function that plays a single round. The function takes two parameters - the playerSelection and computerSelection - and return a sting that declares
-the winner of the winner of the round like so: "You lose! Paper beats Rock" */  
-
-const playRound = (playerSelection, computerSelection) => {
-    // transforms all player input strings to lower case
-    playerSelection = playerSelection.toLowerCase();
-
+// function that plays one round of Rock, Paper, Scissors by comparing the user and cpu entries with the elements in the array
+let round = (playerSelection, computerSelection) => {
+    // Same Choice
     if (playerSelection === computerSelection) {
-        return 'It\'s a tie!';
+        console.log('It\'s a tie!');
     }
-
-    // Paper Beats Rock
-    if (playerSelection === 'paper' && computerSelection === 'rock') {
-       return 'PLAYER WINS! Paper beats rock';
-    } else if (computerSelection === 'paper' && playerSelection === 'rock') {
-        return 'CPU wins Paper beats rock';
+    // Paper Beats Rock: Checks User / CPU selection
+    if (playerSelection === choices[1] || computerSelection === choices[1]) {
+        if (playerSelection === choices[0]) {
+            console.log('CPU wins! Paper beats Rock!');
+        } else if (computerSelection === choices[0]) {
+            console.log('Player Wins! Paper Beats Rock!');
+        }
     }
-    // Rock Beats Scissors
-    if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        return 'PLAYER WINS! rock beats scissors';
-     } else if (computerSelection === 'rock' && playerSelection === 'scissors') {
-         return 'CPU wins rock beats scissors';
-     }
-
-    // Scissors beats paper 
-    if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        return 'PLAYER WINS! scissors beats paper';
-     } else if (computerSelection === 'scissors' && playerSelection === 'paper') {
-         return 'CPU wins scissors beats paper';
-     }
+    // Rock Beats Scissors: Checks User / CPU selection
+    if (playerSelection === choices[0] || computerSelection === choices[0]) {
+        if (playerSelection === choices[2]) {
+            console.log('CPU wins! Rock beats Scissors!');
+        } else if (computerSelection === choices[2]) {
+            console.log('Player Wins! Rock beats Scissors!');
+        }
+    }
+    // Scissors Beats Paper: Checks User / CPU selection
+    if (playerSelection === choices[2] || computerSelection === choices[2]) {
+        if (playerSelection === choices[1]) {
+            console.log('CPU Wins! Scissors beats Paper!');
+        } else if (computerSelection === choices[1]) {
+            console.log('Player Wins! Scissors beats Paper!');
+        }
+    }
 }
 
-const player = 'paper';
-const cpu = computerPlay();
-console.log(playRound(player, cpu));
-
+round(userPlay(), computerPlay());
